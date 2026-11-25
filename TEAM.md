@@ -88,12 +88,14 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Phần việc phụ trách
 
-- Nhiệm vụ C: gắn nhãn 2.
-- Nhiệm vụ E: `report/team/ho_so_launch_v0.md`; duyệt chéo `report/team/phieu_cham.md`; `report/team/group_report.md`.
+- Nhiệm vụ C: gắn nhãn 2, đối soát nhãn độc lập.
+- Nhiệm vụ E: `report/team/ho_so_launch_v0.md`; chuẩn bị duyệt chéo `report/team/phieu_cham.md`; `report/team/group_report.md`.
 
 ### Đóng góp cụ thể
 
--
+- Gắn nhãn độc lập 20 ca lỗi theo PAIR, đạt đồng thuận 20/20 (100%), hoàn thiện bảng 5 ca khắc phục kèm event đo lường.
+- Hoàn thiện hồ sơ launch v0 1 trang gồm 7 mục với đầy đủ nhãn Giả lập đúng quy định, đưa ra đề xuất Go có điều kiện có bằng chứng số liệu và 4 điều kiện xử lý.
+- Soạn thảo báo cáo nhóm `group_report.md` và chuẩn bị phiếu chấm phản biện Gate 2a `phieu_cham.md`.
 
 ### Bằng chứng
 
