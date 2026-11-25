@@ -6,7 +6,7 @@
 
 Người gắn nhãn 1: Trần Bảo Long · Người gắn nhãn 2: Nguyễn Ngọc Bách (gắn trong 8 phút, không trao đổi)
 
-| Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
+| Ca | Nhãn người 1 (Trần Bảo Long) | Nhãn người 2 (Nguyễn Ngọc Bách) | Trùng? | Nhãn thống nhất |
 | --: | --- | --- | --- | --- |
 | 1 | Do người dùng | Do người dùng | Trùng | Do người dùng |
 | 2 | Hệ thống | Hệ thống | Trùng | Hệ thống |
@@ -29,25 +29,26 @@ Người gắn nhãn 1: Trần Bảo Long · Người gắn nhãn 2: Nguyễn Ng
 | 19 | Giới hạn hệ thống | Giới hạn hệ thống | Trùng | Giới hạn hệ thống |
 | 20 | Hệ thống | Hệ thống | Trùng | Hệ thống |
 
-**Tỉ lệ đồng thuận:** 20 / 20 = 100%
+**Tỉ lệ đồng thuận:** 20 / 20 = 100% (4 Do người dùng · 5 Hệ thống · 4 Ngữ cảnh · 4 Giới hạn hệ thống · 3 Ngầm)
 
 ## Quy tắc phân biệt cho các ca không trùng
 
-Đồng thuận đạt 20/20 (100% ≥ 80%). Các nguyên tắc phân biệt cốt lõi bám theo nguyên nhân gốc:
+Đồng thuận đạt 20/20 (100% ≥ 80%, không có ca lệch). Các nguyên tắc phân biệt cốt lõi theo nguyên nhân gốc được nhóm thống nhất cho các ca dễ lẫn:
 
-- **Ca 6, 9 là do người dùng, không phải hệ thống:** Nguyên nhân gốc do khách chọn sai danh mục hoặc nhập sai định dạng mã vận đơn; hệ thống xử lý đúng theo đầu vào được cấp.
-- **Ca 8 là lỗi hệ thống:** Trích dẫn điều khoản không tồn tại (hallucination) là lỗi sinh nội dung sai của mô hình/hệ thống, dù số tiền hoàn ngẫu nhiên vẫn đúng.
-- **Ca 10, 16 là lỗi ngữ cảnh:** Trợ lý từ chối đúng chính sách bão hoặc gửi thông báo đúng lúc xong việc, nhưng vi phạm ngữ cảnh cam kết app hoặc gây phiền toái vào ban đêm.
-- **Ca 12 là lỗi ngầm:** Kết quả bên ngoài vẫn đúng nên người dùng và nhân viên không biết, nhưng bên trong bị lặp gọi tool làm chi phí token tăng gấp 3 lần suốt 3 tuần.
+- **Ca 6, 9 là Do người dùng, không phải Hệ thống:** Nguyên nhân gốc do khách chọn sai mục hoặc nhập mã sàn TMĐT thay cho mã vận đơn; việc bổ sung gợi ý nằm ở cột khắc phục.
+- **Ca 8, 15 là Hệ thống, không phải Ngầm:** Lỗi đã lộ ra (trích dẫn điều khoản 7.2 không tồn tại nhìn thấy ngay; tính sai 100% bị nhân viên xem lại phát hiện trước khi gửi).
+- **Ca 13 là Giới hạn hệ thống:** Yêu cầu ngoài phạm vi trợ lý (bảo hiểm của đối tác) là giới hạn hệ thống, kể cả khi trợ lý phản hồi chung chung.
+- **Ca 10, 16, 18 là Ngữ cảnh:** Trợ lý xử lý đúng thiết kế/chính sách nhưng giả định không khớp hoàn cảnh của khách (bão bất khả kháng vs cam kết 24h trên app, gửi Zalo lúc 2:14 sáng, thiếu công thức tính trong tin nhắn).
+- **Ca 12 là Ngầm:** Kết quả bên ngoài vẫn đúng nên không ai nhận ra, nhưng gọi lặp tool khiến chi phí token depot D05 gấp 3 lần suốt 3 tuần.
 
 ## Bảng khắc phục cho 5 ca, mỗi loại một ca
 
-Cách phát hiện phải đo được (event, ngưỡng, tần suất). Người phụ trách là một vai trò, không ghi "cả đội".
+Cách phát hiện đo được (event, ngưỡng, tần suất) và đồng bộ với danh sách event trong `report/team/chi_so.md`. Người phụ trách là một vai trò, không ghi "cả đội".
 
 | Ca | Loại lỗi | Phát hiện bằng gì | Khắc phục thế nào | Ai phụ trách |
 | --: | --- | --- | --- | --- |
-| 9 | Do người dùng | Event `input_validation_failed`; cảnh báo khi quá 2% số yêu cầu/ngày | Nhận diện mã sàn TMĐT và tra sang mã vận đơn; không tra được thì hướng dẫn kèm ảnh | PM trợ lý hoàn phí |
-| 7 | Hệ thống | Đối soát mỗi giờ: tin nhắn “đã hoàn” không có bản ghi sổ cái ok cùng `trace_id`; ngưỡng 0 ca | Chỉ báo “đã hoàn” khi sổ cái trả ok; lỗi 503 sau 3 lần thì báo “đang xử lý” và chuyển nhân viên | Kỹ sư trưởng agent |
-| 18 | Ngữ cảnh | Tỉ lệ mở lại vì lý do số tiền mà kiểm tra thấy đúng, theo dõi theo tuần | Mẫu tin nhắn luôn ghi rõ công thức tính minh bạch: 30.000 đ × 50% = 15.000 đ | Trưởng nhóm CSKH |
-| 4 | Giới hạn hệ thống | Event `handoff_to_staff` với `reason = thieu_du_lieu`, theo loại yêu cầu | Giữ luồng chuyển tiếp kèm bản tóm tắt; đưa `quoc_te` ra khỏi phạm vi pilot | PM trợ lý hoàn phí |
-| 17 | Ngầm | Kiểm tra mẫu 100 đơn/tuần so với bảng giá hiện hành; ngưỡng 1% đơn lệch | Xoá bộ nhớ đệm tự động khi phát hành bảng giá mới; ghi phiên bản bảng giá vào trace | Kế toán trưởng |
+| 9 | Do người dùng | Event `input_validation_failed` (bổ sung gắn `trace_id`) hoặc `agent_run_completed` (`status = loi` do sai định dạng mã); cảnh báo khi > 2% số yêu cầu/ngày | Tự nhận diện mã đơn sàn TMĐT để tra chéo sang mã vận đơn LogiX; nếu không tra được thì hiển thị hướng dẫn kèm ảnh vị trí mã vận đơn | PM trợ lý hoàn phí |
+| 7 | Hệ thống | Đối soát tự động mỗi giờ giữa tin nhắn báo "đã hoàn" (`ticket_closed`) và bản ghi `refund_ledger_write` (`ket_qua = ok`) cùng `trace_id`; ngưỡng cảnh báo: > 0 ca lệch | Chỉ cho phép báo "đã hoàn tiền thành công" khi `refund_ledger_write` trả `ok` kèm `idempotency_key`; gặp lỗi 503 sau tối đa 2 lần thử thì báo "đang xử lý" và phát `handoff_to_staff` | Kỹ sư trưởng agent |
+| 18 | Ngữ cảnh | Thống kê hằng tuần tỉ lệ `ticket_reopened` có `reason = thieu_tien` nhưng đối soát cho thấy số tiền hoàn đúng chính sách; ngưỡng cảnh báo: > 1% số đơn hoàn một phần/tuần | Chuẩn hoá mẫu tin nhắn luôn hiển thị rõ công thức tính minh bạch (ví dụ: `30.000 đ × 50% = 15.000 đ`) và kênh nhận tiền (ví LogiX hoặc tài khoản ngân hàng) | Trưởng nhóm CSKH |
+| 4 | Giới hạn hệ thống | Event `handoff_to_staff` với `reason = thieu_du_lieu` hoặc `ngoai_pham_vi`, tổng hợp hằng ngày theo cột `loai`; ngưỡng cảnh báo: > 5% tổng yêu cầu trong phạm vi pilot/ngày | Giữ cơ chế chuyển nhân viên kèm bản tóm tắt ngay ở lần thử 1 (không chạy lại 3 lần); đưa hoàn toàn nhóm `quoc_te` ra khỏi phạm vi pilot | PM trợ lý hoàn phí |
+| 17 | Ngầm | Event `audit_sample_checked`: kiểm tra mẫu định kỳ 100 đơn/tuần so sánh `so_tien_da_hoan` với `so_tien_dung` theo `phien_ban_bang_gia` hiện hành; ngưỡng cảnh báo: >= 1% đơn kiểm tra bị lệch | Gắn `phien_ban_bang_gia` vào mọi `agent_run_completed`; tự động xoá bộ nhớ đệm (cache invalidation) khi phát hành bảng giá mới và cảnh báo nếu trace dùng phiên bản cũ | Kế toán trưởng |
