@@ -5,7 +5,7 @@
 - Tên nhóm: Buathoi
 - Lớp: L3B
 - Repo nhóm: `K5-L3B-Day13-Buathoi-LaunchEconomics` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt: https://github.com/Phog2811/K5-L3B-Day13-Buathoi-LaunchEconomics · nhánh `main` · commit chốt: (điền lúc nộp)
+- URL repo, nhánh nộp, commit chốt: https://github.com/Phog2811/K5-L3B-Day13-Buathoi-LaunchEconomics · nhánh `main` · commit chốt: `425cb51`
 
 ## Thành viên
 
