@@ -45,10 +45,13 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- Viết A1–A4, B1–B4 trong `src/lab13.py`: ba phép thử ĐẠT; chi phí mỗi việc thành công 4.472 đ [simulated], gấp 16,3 lần hoá đơn chia số yêu cầu.
+- Viết `report/team/chi_so.md`: ba chỉ số E1, 10 event có `trace_id`, kiểm tra chéo, 4 dòng rủi ro kinh tế.
+- Tạo repo, chia việc (`TASKS.md`), điền `TEAM.md`.
 
 ### Bằng chứng
 
+- Commit `be79fee`, `782284e` (code A–B); `59a3c7c` và commit E1 (`chi_so.md`); `9318018`, `7d5626c`, `ba12f0b` (`TASKS.md`, `TEAM.md`).
 - Báo cáo cá nhân: `report/team/04090_DinhHoangPhong.md`
 
 ## TranDinhNhatMinh-04083

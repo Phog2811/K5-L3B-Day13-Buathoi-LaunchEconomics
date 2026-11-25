@@ -4,13 +4,13 @@
 
 | Loại | Chỉ số | Công thức | Tính thử trên 1.200 yêu cầu |
 | --- | --- | --- | --- |
-| Chính (kết quả) | % yêu cầu đóng trong 24 giờ và không mở lại trong 7 ngày | `dong_trong_24h` bằng 1 và `mo_lai_trong_7_ngay` bằng 0, chia tổng số yêu cầu | ... (chờ `TODO CP4` trong `src/lab13.py`) |
-| Dùng | Tỉ lệ bỏ qua gợi ý | `quyet_dinh_xem_lai` là `sua` hoặc `bo`, chia số yêu cầu được xem lại | ... (chờ `TODO CP4`) |
-| An toàn | Tỉ lệ lỗi lọt đến khách | `mo_lai_trong_7_ngay` bằng 1, chia tổng số yêu cầu | ... (chờ `TODO CP4`) |
+| Chính (kết quả) | % yêu cầu đóng trong 24 giờ và không mở lại trong 7 ngày | `dong_trong_24h` bằng 1 và `mo_lai_trong_7_ngay` bằng 0, chia tổng số yêu cầu | 82,83% (994/1.200) |
+| Dùng | Tỉ lệ bỏ qua gợi ý | `quyet_dinh_xem_lai` là `sua` hoặc `bo`, chia số yêu cầu được xem lại | 27,12% (48/177) |
+| An toàn | Tỉ lệ lỗi lọt đến khách | `mo_lai_trong_7_ngay` bằng 1, chia tổng số yêu cầu | 4,25% (51/1.200); trong phạm vi `noi_dia` + `hang_nang`: 3,97% (39/982) |
 | Dùng | Nhóm tự đề xuất: % yêu cầu của nhóm can thiệp được nhân viên mở bằng trợ lý | số `agent_suggestion_shown` có `arm = tro_ly`, chia số `refund_request_created` có `arm = tro_ly` | Không cần tính |
 | An toàn | Nhóm tự đề xuất: % đơn hoàn sai tiền phát hiện qua kiểm tra mẫu hằng tuần (bắt lỗi ngầm như ca 5, 17) | số `audit_sample_checked` có `so_tien_da_hoan` khác `so_tien_dung`, chia số đơn được kiểm tra trong tuần | Không cần tính |
 
-Viết "chỉ số trong đợt chạy thử là …", không viết "trợ lý đã nâng chỉ số": đợt chạy thử không có nhóm đối chứng.
+Số tính bằng phần E1 trong `src/lab13.py` (dữ liệu giả lập của lab). Chỉ số chính trong đợt chạy thử là 82,83%; đợt chạy thử không có nhóm đối chứng nên con số này chưa cho biết tác động của trợ lý so với baseline 0,70. Chỉ có pilot chia ngẫu nhiên trong `pilot_plan.yaml` mới tách được tác động.
 
 ## Danh sách event
 
