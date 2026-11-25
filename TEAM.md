@@ -29,8 +29,6 @@ Bốn vai của lab:
 
 > **Xoá dòng của mình khỏi danh sách này ngay khi làm xong rồi push. Khi danh sách trống, Phong xoá cả mục này trước commit chốt.**
 
-- [x] **Bách** · `report/team/ho_so_launch_v0.md`, đề xuất "Go có điều kiện": điều kiện 3 (telemetry) thêm **người phụ trách** (một vai trò); điều kiện 4 (giảm xem lại theo bậc) thêm **người phụ trách và ngày kiểm tra**. Đề yêu cầu mỗi điều kiện có đủ cả hai.
-- [x] **Bách** · `report/team/ho_so_launch_v0.md`, mục 1, 2, 3: gắn nhãn `[simulated]` ngay cạnh từng con số (4.472 đ, 4.599 đ, +51,8%, +40,7%, +23,1%, 5.865 đ, 11.743 đ – 12.415 đ…), không chỉ ghi "Giả lập" ở cột trạng thái (tiêu chí C7: nhãn ở mọi số giả lập).
 - [ ] **Bách** · `report/team/phieu_cham.md`: điền khi làm hội đồng chấm nhóm n + 1 (nhóm chấm, nhóm được chấm, điểm, lý do có số, quyết định, câu hỏi, câu trả lời).
 - [ ] **Bách** · `report/team/group_report.md` mục 4: thêm kết quả duyệt chéo nhóm mình nhận được từ hội đồng.
 - [ ] **Phong** · `TEAM.md`: ghi commit chốt ở mục "Thông tin nhóm", xoá mục này, push lần cuối.
