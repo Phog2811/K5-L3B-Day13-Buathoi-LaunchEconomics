@@ -29,8 +29,8 @@ Bốn vai của lab:
 
 > **Xoá dòng của mình khỏi danh sách này ngay khi làm xong rồi push. Khi danh sách trống, Phong xoá cả mục này trước commit chốt.**
 
-- [ ] **Bách** · `report/team/phieu_cham.md`: điền khi làm hội đồng chấm nhóm n + 1 (nhóm chấm, nhóm được chấm, điểm, lý do có số, quyết định, câu hỏi, câu trả lời).
-- [ ] **Bách** · `report/team/group_report.md` mục 4: thêm kết quả duyệt chéo nhóm mình nhận được từ hội đồng.
+- [x] **Bách** · `report/team/phieu_cham.md`: điền khi làm hội đồng chấm nhóm n + 1 (nhóm chấm, nhóm được chấm, điểm, lý do có số, quyết định, câu hỏi, câu trả lời).
+- [x] **Bách** · `report/team/group_report.md` mục 4: thêm kết quả duyệt chéo nhóm mình nhận được từ hội đồng.
 - [ ] **Phong** · `TEAM.md`: ghi commit chốt ở mục "Thông tin nhóm", xoá mục này, push lần cuối.
 - [ ] **Cả 4 người** · tự nộp link repo trên LMS bằng tài khoản cá nhân trước 23h59 GMT+7.
 
