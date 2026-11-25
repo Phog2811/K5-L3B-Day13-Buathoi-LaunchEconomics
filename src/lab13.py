@@ -4,6 +4,7 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -72,6 +73,15 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
                 xem_lai=xem_lai, lam_lai=lam_lai, tong=tong,
                 thanh_cong=thanh_cong, cps=tong / thanh_cong,
                 hoa_don_moi_yc=(tien_token.sum() + tien_tool.sum()) / len(reqs))
+
+
+def co_mau(p1, p2, alpha=0.05, power=0.8):
+    """Cỡ mẫu mỗi nhóm để so hai tỉ lệ độc lập, kiểm định hai phía."""
+    za = NormalDist().inv_cdf(1 - alpha / 2)
+    zb = NormalDist().inv_cdf(power)
+    pb = (p1 + p2) / 2
+    return math.ceil((za * math.sqrt(2 * pb * (1 - pb))
+                      + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2 / (p2 - p1) ** 2)
 
 
 if __name__ == '__main__':
@@ -165,6 +175,53 @@ if __name__ == '__main__':
         print(f'  {nhan:26s} tổng {tien_xem + tien_lam + token_tool:12,.0f} đ · cps {cps:6,.0f} đ = '
               f'{cps / BASELINE:.2f}x · hoà vốn khi xem lại ≤ {hoa_von:.1f} phút [simulated]')
 
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    # ---------- Nhiệm vụ D1 · Cỡ mẫu và đánh đổi khi chia cụm ----------
+    from statsmodels.stats.proportion import proportion_effectsize
+    from statsmodels.stats.power import NormalIndPower
+
+    ICC, M, C = 0.02, 75, 20
+    n_5 = co_mau(0.70, 0.75)
+    de_75 = 1 + (M - 1) * ICC
+    n_cum = math.ceil(n_5 * de_75)
+    so_nguoi = math.ceil(n_cum / M)
+    n_6 = co_mau(0.70, 0.76)
+    m_6 = math.ceil(n_6 * (1 - ICC) / (C - n_6 * ICC))
+    de_6 = 1 + (m_6 - 1) * ICC
+    n_hieu_dung = C * m_6 / de_6
+    power_5 = NormalIndPower().power(
+        effect_size=abs(proportion_effectsize(0.70, 0.75)),
+        nobs1=n_6, alpha=0.05, ratio=1, alternative='two-sided')
+
+    assert (n_5, n_6) == (1251, 859), 'Đối chiếu công thức hai tỉ lệ của đề'
+    assert C * (m_6 - 1) / (1 + (m_6 - 2) * ICC) < n_6 <= n_hieu_dung
+    print('\nD1 · Cỡ mẫu mỗi nhóm (baseline 70%, alpha 0,05, power 80%, ICC 0,02)')
+    print(f'  a) Theo yêu cầu, +5 điểm phần trăm: {n_5:,} yêu cầu/nhóm.')
+    print(f'  b) Theo nhân viên, m={M}: DE={de_75:.2f}; {n_cum:,} yêu cầu/nhóm; '
+          f'{so_nguoi} người/nhóm, tổng {2 * so_nguoi} > 40: không đủ người.')
+    print(f'  c) {C} nhân viên/nhóm: n hiệu dụng < {C / ICC:,.0f} < {n_5:,}; '
+          f'với m={M} chỉ đạt {C * M / de_75:.2f}; tăng thời gian vẫn không đủ cho +5 điểm.')
+    print(f'  d) 6 depot/nhóm: n hiệu dụng < {6 / ICC:,.0f} < {n_5:,}; '
+          'chỉ 6 cụm/nhóm, dưới mức 20 cụm.')
+    print(f'  e) +6 điểm phần trăm: {n_6} yêu cầu hiệu dụng/nhóm; {C} người/nhóm cần '
+          f'm >= {m_6}; DE={de_6:.2f}; n hiệu dụng={n_hieu_dung:.2f}; '
+          f'{C * m_6:,} yêu cầu thực/nhóm, tổng {2 * C * m_6:,}.')
+    print(f'  Đánh đổi: nếu tác động thật chỉ +5 điểm, power tại n={n_6} là {power_5:.2%}, '
+          'thấp hơn mục tiêu 80%; không phát hiện khác biệt chưa chứng minh không có tác động.')
+
+    # ---------- Nhiệm vụ E1 · Chỉ số quan sát và tỉ lệ mở lại cho D ----------
+    xem = reqs[reqs['duoc_xem_lai'] == 1]
+    chinh = ((reqs['dong_trong_24h'] == 1) & (reqs['mo_lai_trong_7_ngay'] == 0)).sum()
+    bo_qua = xem['quyet_dinh_xem_lai'].isin(['sua', 'bo']).sum()
+    mo_lai = (reqs['mo_lai_trong_7_ngay'] == 1).sum()
+    mo_lai_pv = (pham_vi['mo_lai_trong_7_ngay'] == 1).sum()
+    assert (chinh, bo_qua, len(xem), mo_lai, mo_lai_pv) == (994, 48, 177, 51, 39), \
+        'Đối chiếu chỉ số trên bộ CSV cố định của lab'
+    print('\nE1 · Chỉ số trong đợt chạy thử (dữ liệu giả lập; chưa có đối chứng)')
+    print(f'  Chính: đóng trong 24 giờ và không mở lại trong 7 ngày '
+          f'{chinh}/{len(reqs)} = {chinh / len(reqs):.2%}.')
+    print(f'  Dùng: sửa hoặc bỏ gợi ý trong các yêu cầu được xem lại '
+          f'{bo_qua}/{len(xem)} = {bo_qua / len(xem):.2%}.')
+    print(f'  An toàn / D: mở lại trong 7 ngày, toàn mẫu '
+          f'{mo_lai}/{len(reqs)} = {mo_lai / len(reqs):.2%}; '
+          f'noi_dia + hang_nang {mo_lai_pv}/{len(pham_vi)} = {mo_lai_pv / len(pham_vi):.2%}.')
+    print('Tự kiểm tra D1–E1: ĐẠT')
