@@ -11,10 +11,10 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 | Đinh Hoàng Phong | 04090 |  | Phog2811 | Người viết code 1 (CP1–CP2), quản lý repo |
-|   2 | Trần Đình Nhật Minh | 04083 |  | trandinhnhatminh1452 | Người kiểm số (CP1–CP2), người viết code 2 (CP3–CP5) |
-|   3 | Trần Bảo Long | 04012 |  | Blong1501 | Người gắn nhãn 1 |
-|   4 | Nguyễn Ngọc Bách | 04108 |  | bachnguyen2001 | Người gắn nhãn 2, kiêm giữ hồ sơ |
+|   1 | Đinh Hoàng Phong | 04090 |  | Phog2811 | Nhóm trưởng · Người viết code 1 (A, B trong `lab13.py`) · phụ trách `chi_so.md`, `TEAM.md` |
+|   2 | Trần Đình Nhật Minh | 04083 |  | trandinhnhatminh1452 | Người kiểm số (`bang_chi_phi.md`) · Người viết code 2 sau giải lao (D1, E1 trong `lab13.py`) |
+|   3 | Trần Bảo Long | 04012 |  | Blong1501 | Người gắn nhãn 1 · phụ trách `bang_loi.md`, `pilot_plan.yaml` |
+|   4 | Nguyễn Ngọc Bách | 04108 |  | bachnguyen2001 | Người gắn nhãn 2, kiêm giữ hồ sơ · phụ trách `ho_so_launch_v0.md`, `phieu_cham.md`, `group_report.md` |
 
 Bốn vai của lab:
 
