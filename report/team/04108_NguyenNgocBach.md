@@ -17,13 +17,16 @@
 ## 3. Đóng góp cụ thể
 
 - Gắn nhãn độc lập 20 ca lỗi trong 8 phút không trao đổi: đạt tỉ lệ đồng thuận 20/20 (100%) với bạn Trần Bảo Long. Phân loại chuẩn xác 5 nhóm lỗi (4 người dùng, 5 hệ thống, 4 ngữ cảnh, 4 giới hạn hệ thống, 3 lỗi ngầm).
-- Đề xuất 5 giải pháp khắc phục đo lường được cho 5 ca tiêu biểu (ca 9, 7, 18, 4, 17) kèm event giám sát và phân định đúng vai trò phụ trách độc lập trong `bang_loi.md`.
-- Hoàn thiện toàn bộ hồ sơ `ho_so_launch_v0.md` 1 trang gồm 7 mục, gắn nhãn `Giả lập` chuẩn xác cho các mục tính từ `_simulated` (mục 1, 2, 3, 7). Đưa ra đề xuất **Go có điều kiện** bảo vệ tính kinh tế của dự án, chỉ ra rõ ràng các con số bất lợi (chi phí xem lại 100% lên tới 1,03× mức 12.000 đ [simulated], power giảm còn 64,17% nếu effect size chỉ đạt 5 điểm phần trăm) kèm 4 điều kiện xử lý chặt chẽ.
+- Phối hợp hoàn thiện 5 giải pháp khắc phục đo lường được cho 5 ca tiêu biểu (ca 9, 7, 18, 4, 17) kèm event giám sát khớp danh sách telemetry trong `chi_so.md` và phân định đúng vai trò phụ trách độc lập trong `bang_loi.md`.
+- Hoàn thiện toàn bộ hồ sơ `ho_so_launch_v0.md` 1 trang gồm 7 mục:
+  - Gắn nhãn `[simulated]` chặt chẽ ngay cạnh mọi con số tính từ thời gian giả lập (4.472 đ [simulated], 4.599 đ [simulated], +51,8% [simulated], +40,7% [simulated], +23,1% [simulated], 5.865 đ [simulated], 11.743 đ – 12.415 đ [simulated]...) theo tiêu chí C7 rubric.
+  - Đưa ra đề xuất **Go có điều kiện** bảo vệ tính kinh tế của dự án, chỉ ra rõ ràng các con số bất lợi (chi phí xem lại 100% lên tới 1,03× mức 12.000 đ [simulated], power giảm còn 64,17% nếu effect size chỉ đạt 5 điểm phần trăm).
+  - Quy định rõ cả **người phụ trách** (vai trò) và **ngày kiểm tra** cho toàn bộ 4 điều kiện bắt buộc trước/trong rollout.
 - Chuẩn bị khung phiếu chấm phản biện `phieu_cham.md` và tổng hợp nội dung cho `group_report.md`.
 
 ## 4. Bằng chứng
 
-- File hồ sơ launch: [report/team/ho_so_launch_v0.md](ho_so_launch_v0.md) (đủ 7 mục, trạng thái, người phụ trách, đề xuất Go có điều kiện có căn cứ số liệu).
+- File hồ sơ launch: [report/team/ho_so_launch_v0.md](ho_so_launch_v0.md) (đủ 7 mục, trạng thái, người phụ trách, đề xuất Go có điều kiện có căn cứ số liệu, đủ nhãn `[simulated]` cạnh từng số, đủ vai trò và ngày kiểm tra cho 4 điều kiện).
 - File bảng lỗi: [report/team/bang_loi.md](bang_loi.md) (hai bộ nhãn độc lập, tỉ lệ đồng thuận 100%, 5 giải pháp khắc phục).
 - File kế hoạch pilot: [report/team/pilot_plan.yaml](pilot_plan.yaml) (đã kiểm tra đọc bằng PyYAML, 3 luật dừng NẾU - TRONG - THÌ - KHÔNG THÌ, không còn `?`).
 - File phiếu chấm: [report/team/phieu_cham.md](phieu_cham.md) và báo cáo nhóm [report/team/group_report.md](group_report.md).
