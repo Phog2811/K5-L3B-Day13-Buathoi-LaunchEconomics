@@ -37,5 +37,4 @@
 - Tôi tự đọc lại code để giải thích được: vì sao tử số tính mọi lần chạy còn mẫu số chỉ đếm `thanh_cong`, và vì sao giới hạn rẻ nhất cho công ty khác giới hạn có chi phí mỗi việc thấp nhất.
 
 ## 6. Tự đánh giá
-
-...
+khá tốt
