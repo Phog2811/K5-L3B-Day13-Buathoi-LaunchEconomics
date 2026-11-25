@@ -25,6 +25,17 @@ Bốn vai của lab:
 
 Đổi người viết code sau giờ giải lao, để ít nhất hai người trong nhóm tự tay tính được chi phí. Chia việc chi tiết: [TASKS.md](TASKS.md).
 
+## Việc còn phải làm trước khi nộp
+
+> **Xoá dòng của mình khỏi danh sách này ngay khi làm xong rồi push. Khi danh sách trống, Phong xoá cả mục này trước commit chốt.**
+
+- [ ] **Bách** · `report/team/ho_so_launch_v0.md`, đề xuất "Go có điều kiện": điều kiện 3 (telemetry) thêm **người phụ trách** (một vai trò); điều kiện 4 (giảm xem lại theo bậc) thêm **người phụ trách và ngày kiểm tra**. Đề yêu cầu mỗi điều kiện có đủ cả hai.
+- [ ] **Bách** · `report/team/ho_so_launch_v0.md`, mục 1, 2, 3: gắn nhãn `[simulated]` ngay cạnh từng con số (4.472 đ, 4.599 đ, +51,8%, +40,7%, +23,1%, 5.865 đ, 11.743 đ – 12.415 đ…), không chỉ ghi "Giả lập" ở cột trạng thái (tiêu chí C7: nhãn ở mọi số giả lập).
+- [ ] **Bách** · `report/team/phieu_cham.md`: điền khi làm hội đồng chấm nhóm n + 1 (nhóm chấm, nhóm được chấm, điểm, lý do có số, quyết định, câu hỏi, câu trả lời).
+- [ ] **Bách** · `report/team/group_report.md` mục 4: thêm kết quả duyệt chéo nhóm mình nhận được từ hội đồng.
+- [ ] **Phong** · `TEAM.md`: ghi commit chốt ở mục "Thông tin nhóm", xoá mục này, push lần cuối.
+- [ ] **Cả 4 người** · tự nộp link repo trên LMS bằng tài khoản cá nhân trước 23h59 GMT+7.
+
 ## Cá nhân
 
 Mỗi thành viên đồng thời tạo một báo cáo riêng trong `report/` theo dạng:
@@ -63,10 +74,14 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- Điền `report/team/bang_chi_phi.md` (A1–A4, B1–B4) từ output `lab13.py`, đủ nhãn `simulated`; tính tay 5 dòng đầu `logix_runs.csv` (1.090,45 đ) và kiểm tra độc lập tiền token bằng `csv` + `Decimal` (245.585,132 đ, khớp `mo_hinh`).
+- Kiểm tra ba cặp độ nhạy: mức giảm khi ×0,5 bằng nửa mức tăng khi ×2.
+- Viết hàm `co_mau` và phần D1–E1 trong `src/lab13.py`: cỡ mẫu 1.251 · 3.103 (42 người/nhóm) · trần 1.000 · trần 300 · m ≥ 299; power 64,17% nếu tác động thật chỉ +5 điểm; ba chỉ số E1 (82,83% · 27,12% · 4,25%) và tỉ lệ mở lại trong phạm vi 3,97%.
+- Bàn giao số D1 cho Long, E1 cho Phong, số chi phí cho Bách.
 
 ### Bằng chứng
 
+- Commit `966f78e` (`src/lab13.py`, `bang_chi_phi.md`).
 - Báo cáo cá nhân: `report/team/04083_TranDinhNhatMinh.md`
 
 ## TranBaoLong-04012
@@ -78,10 +93,13 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- Gắn nhãn độc lập 20 ca lỗi (người gắn nhãn 1), đồng thuận 20/20 với Bách; điền `report/team/bang_loi.md` gồm hai bộ nhãn và bảng khắc phục 5 ca (ca 9, 7, 18, 4, 17), cách phát hiện dùng đúng tên event trong `chi_so.md`.
+- Viết `report/team/pilot_plan.yaml`: chú thích D1, D2, đánh đổi MDE 6 điểm (power 64,17% ở mức 5 điểm), ngưỡng an toàn dựa trên tỉ lệ mở lại hiện tại (4,25% / 3,97%), 3 luật dừng đủ 4 vế.
+- Chạy `src/lab13.py` trên máy thứ hai: ba phép thử A1 ĐẠT, `Tự kiểm tra D1–E1: ĐẠT`.
 
 ### Bằng chứng
 
+- Commit `3d0e302` (`bang_loi.md`, `pilot_plan.yaml`).
 - Báo cáo cá nhân: `report/team/04012_TranBaoLong.md`
 
 ## NguyenNgocBach-04108
@@ -99,4 +117,5 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Bằng chứng
 
+- Commit `425f0e3` (`ho_so_launch_v0.md`, `group_report.md`, `bang_loi.md`).
 - Báo cáo cá nhân: `report/team/04108_NguyenNgocBach.md`
